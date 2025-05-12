@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu d'Apprentissage Allemand</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="menu-principal" class="ecran">
+        <h1>Jeu d'Apprentissage de Vocabulaire Allemand</h1>
+        <p>Un jeu interactif pour apprendre du vocabulaire allemand</p>
+        <button id="btn-configurer">Configurer le Jeu</button>
+    </div>
+
+    <div id="configuration" class="ecran" style="display: none;">
+        <h1>Configuration du Jeu</h1>
+        <p>Entrez les mots allemands et leurs traductions (un par ligne):</p>
+        <p>Format: mot allemand; traduction française</p>
+        <textarea id="liste-mots" rows="10" cols="50" placeholder="Beispiel = exemple
+Haus = maison"></textarea>
+        <div class="options-jeu">
+            <div class="option">
+                <label for="espacement-obstacles">Espacement des obstacles:</label>
+                <input type="range" id="espacement-obstacles" min="400" max="2000" value="600" step="100">
+                <span id="valeur-espacement">600</span> pixels
+            </div>
+            <div class="option">
+                <label>Direction du jeu:</label>
+                <div class="radio-options">
+                    <label>
+                        <input type="radio" name="direction-jeu" id="direction-allemand-francais" checked>
+                        Allemand → Français (Mot affiché en allemand, réponse en français)
+                    </label>
+                    <label>
+                        <input type="radio" name="direction-jeu" id="direction-francais-allemand">
+                        Français → Allemand (Mot affiché en français, réponse en allemand)
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="info-micro">
+            <p>Ce jeu utilise le <strong>microphone</strong> pour reconnaître les réponses des élèves.</p>
+            <p>Veuillez autoriser l'accès au microphone lorsque demandé.</p>
+        </div>
+        <div class="boutons">
+            <button id="btn-annuler">Annuler</button>
+            <button id="btn-commencer">Commencer le Jeu</button>
+        </div>
+    </div>
+
+    <div id="jeu" class="ecran" style="display: none;">
+        <div id="info-jeu">
+            <div id="mot-allemand">Mot</div>
+            <div id="score">Score: 0</div>
+        </div>
+        <canvas id="canvas-jeu"></canvas>
+        <div id="instructions">
+            <p>Un mot allemand s'affiche en haut de l'écran.</p>
+            <p><strong>Les élèves doivent dire à voix haute la traduction en français.</strong></p>
+            <p>Si la réponse est correcte, le personnage saute automatiquement!</p>
+            <p class="alternative">(Vous pouvez aussi appuyer sur <strong>ESPACE</strong> pour sauter.)</p>
+        </div>
+    </div>
+
+    <div id="game-over" class="ecran" style="display: none;">
+        <h1>Partie Terminée</h1>
+        <p>Score final: <span id="score-final">0</span></p>
+        <button id="btn-rejouer">Rejouer</button>
+        <button id="btn-menu">Menu Principal</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Script de débogage supplémentaire
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Page chargée. Débogage activé.");
+            const canvas = document.getElementById('canvas-jeu');
+            if (canvas) {
+                console.log(`Canvas trouvé: ${canvas.width}x${canvas.height}`);
+            } else {
+                console.error("Canvas non trouvé!");
+            }
+        });
+    </script>
+</body>
+</html>
